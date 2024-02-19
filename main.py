@@ -24,9 +24,12 @@ class Details:
         print(self.df.head(rows))
     def print_columns(self):
         print(list(self.df.columns))
+    def print_average(self, column):
+        print(f"Average: {column}:", self.df[column].mean())
 
 data = Details('NY-House-Dataset.csv')
 
 print(data.print_first_five_rows())
 print(data.print_any_num_of_rows(15))
 print(data.print_columns())
+print(data.print_average(['PRICE']))
