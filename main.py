@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 ny_house_dataset_master_df = pd.read_csv('NY-House-Dataset.csv')
 
@@ -26,6 +28,11 @@ class Details:
         print(list(self.df.columns))
     def print_average(self, column):
         print(f"Average: {column}:", self.df[column].mean())
+    def display_histogram(self, column):
+        sns.set()
+        self.df[column].hist(bins=100)
+        plt.title(f"{column} Chart")
+        plt.show()
 
 data = Details('NY-House-Dataset.csv')
 
@@ -33,3 +40,4 @@ print(data.print_first_five_rows())
 print(data.print_any_num_of_rows(15))
 print(data.print_columns())
 print(data.print_average(['PRICE']))
+print(data.display_histogram('LATITUDE'))
