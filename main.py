@@ -18,6 +18,7 @@ condo_df['Bathrooms'] = bath.copy() #bath in master df
 condo_df['Bathrooms'] = condo_df['Bathrooms'].astype(int) #convert values from float to int
 square_feet = ny_house_dataset_master_df.iloc[:,5]
 condo_df['Square Feet'] = square_feet.copy() #bath in master df
+condo_df['Square Feet'] = condo_df['Square Feet'].astype(int) #convert values from float to int
 
 condo_df.to_csv('condo_df.csv', index=False)
 
