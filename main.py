@@ -11,9 +11,9 @@ type = ny_house_dataset_master_df.iloc[:,1]
 condo_df['Type'] = type.copy()
 price = ny_house_dataset_master_df.iloc[:,2]
 condo_df['Price'] = type.copy()
-beds = ny_house_dataset_master_df.iloc[:,2]
+beds = ny_house_dataset_master_df.iloc[:,3]
 condo_df['Bedrooms'] = type.copy() #beds in master df
-bath = ny_house_dataset_master_df.iloc[:,2]
+bath = ny_house_dataset_master_df.iloc[:,4]
 condo_df['Square Feet'] = type.copy() #propertysqft in master df
 
 # filtering out non-condo rows from condo dataframe
