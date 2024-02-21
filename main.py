@@ -5,8 +5,11 @@ ny_house_dataset_master_df = pd.read_csv('NY-House-Dataset.csv')
 #print(ny_house_dataset_master_df)
 
 condo_df = pd.DataFrame()
-broker_title = ny_house_dataset_master_df.iloc[:,1]
+broker_title = ny_house_dataset_master_df.iloc[:,0]
 condo_df['Broker Title'] = broker_title.copy()
+broker_title = ny_house_dataset_master_df.iloc[:,1]
+condo_df['Type'] = broker_title.copy()
+
 
 condo_df.to_csv('condo_df.csv', index=False)
 
