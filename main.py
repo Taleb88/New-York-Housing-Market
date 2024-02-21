@@ -10,11 +10,15 @@ condo_df['Broker Title'] = broker_title.copy()
 type = ny_house_dataset_master_df.iloc[:,1]
 condo_df['Type'] = type.copy()
 price = ny_house_dataset_master_df.iloc[:,2]
-condo_df['Price'] = type.copy()
+condo_df['Price'] = price.copy()
 beds = ny_house_dataset_master_df.iloc[:,3]
-condo_df['Bedrooms'] = type.copy() #beds in master df
+condo_df['Bedrooms'] = beds.copy() #beds in master df
 bath = ny_house_dataset_master_df.iloc[:,4]
-condo_df['Square Feet'] = type.copy() #propertysqft in master df
+condo_df['Bathrooms'] = bath.copy() #bath in master df
+square_feet = ny_house_dataset_master_df.iloc[:,5]
+condo_df['Square Feet'] = square_feet.copy() #bath in master df
+
+condo_df.to_csv('condo_df.csv', index=False)
 
 # filtering out non-condo rows from condo dataframe
 def condo_only_values(df):
