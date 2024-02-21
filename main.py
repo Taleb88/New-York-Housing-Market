@@ -27,7 +27,7 @@ def condo_only_values(df):
     try:
         return df[df['Type'].str.contains('Condo for sale')]
     except Exception as e:
-        print('Cannot filter values')
+        print('Unable to filter values')
 
 condo_df = condo_only_values(condo_df)
 
