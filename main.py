@@ -7,8 +7,16 @@ ny_house_dataset_master_df = pd.read_csv('NY-House-Dataset.csv')
 condo_df = pd.DataFrame()
 broker_title = ny_house_dataset_master_df.iloc[:,0]
 condo_df['Broker Title'] = broker_title.copy()
-broker_title = ny_house_dataset_master_df.iloc[:,1]
-condo_df['Type'] = broker_title.copy()
+type = ny_house_dataset_master_df.iloc[:,1]
+condo_df['Type'] = type.copy()
+
+def condo_only_values(df):
+    try:
+        return df[df['Type'].str.contains('Condo')]
+    except Exception as e:
+        print('Cannot filter values')
+
+condo_df = condo_only_values(condo_df)
 
 
 condo_df.to_csv('condo_df.csv', index=False)
