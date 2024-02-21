@@ -31,6 +31,17 @@ condo_df = condo_only_values(condo_df)
 
 condo_df.to_csv('condo_df.csv', index=False)
 
+# converting float to int
+def bedroom_value_type(df):
+    try:
+        return df[df['Bedroom'].astype(int)]
+    except Exception as e:
+        print("Error, unable to convert bedroom values from float to int.")
+
+condo_df = bedroom_value_type(condo_df)
+
+condo_df.to_csv('condo_df.csv', index=False)
+
 #creating a Details class that will allow us to filter a certain amount of rows
 # class Details:
 #     def __init__(self, data):
