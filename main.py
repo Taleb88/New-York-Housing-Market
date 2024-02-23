@@ -23,11 +23,11 @@ address = ny_house_dataset_master_df.iloc[:,6]
 condo_df['Address'] = address.copy()
 state = ny_house_dataset_master_df.iloc[:,7]
 condo_df['State'] = state.copy()
-administrative_area_level_2 = ny_house_dataset_master_df[:,9]
+administrative_area_level_2 = ny_house_dataset_master_df.iloc[:,9]
 condo_df['Administrative Area Level 2'] = administrative_area_level_2.copy()
-locality = ny_house_dataset_master_df[:,10]
+locality = ny_house_dataset_master_df.iloc[:,10]
 condo_df['Locality'] = locality.copy()
-sub_locality = ny_house_dataset_master_df[:,11]
+sub_locality = ny_house_dataset_master_df.iloc[:,11]
 condo_df['Sub-Locality'] = sub_locality.copy()
 
 
