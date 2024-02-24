@@ -4,6 +4,7 @@ ny_house_dataset_master_df = pd.read_csv('NY-House-Dataset.csv')
 
 #print(ny_house_dataset_master_df)
 
+# *Condo for sale*
 condo_df = pd.DataFrame()
 broker_title = ny_house_dataset_master_df.iloc[:,0]
 condo_df['Broker Title'] = broker_title.copy()
@@ -36,7 +37,7 @@ condo_df['Longitude'] = longitude.copy()
 
 condo_df.to_csv('condo_df.csv', index=False)
 
-set_res = set(type)
+set_res = set(type) #convert TYPE column values to set
 # printing out unique elements in TYPE column from sheet of master workbook
 print("unique elements in type column from sheet of master workbook:\n")
 list_res = (list(set_res))
@@ -44,8 +45,6 @@ list_res = (list(set_res))
 for item in list_res:
     print(item)
 
-
-# filtering out non-condo rows from condo dataframe
 def condo_only_values(df):
     try:
         return df[df['Type'].str.contains('Condo for sale')]
@@ -55,6 +54,51 @@ def condo_only_values(df):
 condo_df = condo_only_values(condo_df)
 
 condo_df.to_csv('condo_df.csv', index=False)
+
+
+# *Co-op for sale*
+co_op_df = pd.DataFrame()
+broker_title = ny_house_dataset_master_df.iloc[:,0]
+co_op_df['Broker Title'] = broker_title.copy()
+type = ny_house_dataset_master_df.iloc[:,1]
+co_op_df['Type'] = type.copy()
+price = ny_house_dataset_master_df.iloc[:,2]
+co_op_df['Price'] = price.copy()
+beds = ny_house_dataset_master_df.iloc[:,3]
+co_op_df['Bedrooms'] = beds.copy() #beds in master df
+bath = ny_house_dataset_master_df.iloc[:,4]
+co_op_df['Bathrooms'] = bath.copy() #bath in master df
+co_op_df['Bathrooms'] = co_op_df['Bathrooms'].astype(int) #convert values from float to int
+square_feet = ny_house_dataset_master_df.iloc[:,5]
+co_op_df['Square Feet'] = square_feet.copy() #bath in master df
+co_op_df['Square Feet'] = co_op_df['Square Feet'].astype(int) #convert values from float to int
+address = ny_house_dataset_master_df.iloc[:,6]
+co_op_df['Address'] = address.copy()
+state = ny_house_dataset_master_df.iloc[:,7]
+co_op_df['State'] = state.copy()
+administrative_area_level_2 = ny_house_dataset_master_df.iloc[:,9]
+co_op_df['Administrative Area Level 2'] = administrative_area_level_2.copy()
+locality = ny_house_dataset_master_df.iloc[:,10]
+co_op_df['Locality'] = locality.copy()
+sub_locality = ny_house_dataset_master_df.iloc[:,11]
+co_op_df['Sub-Locality'] = sub_locality.copy()
+latitude = ny_house_dataset_master_df.iloc[:,15]
+co_op_df['Latitude'] = latitude.copy()
+longitude = ny_house_dataset_master_df.iloc[:,16]
+co_op_df['Longitude'] = longitude.copy()
+co_op_df.to_csv('co_op_df.csv', index=False)
+
+def co_op_only_values(df):
+    try:
+        return df[df['Type'].str.contains('Co-op for sale')]
+    except Exception as e:
+        print('Unable to filter values')
+
+co_op_df = co_op_only_values(co_op_df)
+
+co_op_df.to_csv('co_op_df.csv', index=False)
+
+
 
 #creating a Details class that will allow us to filter a certain amount of rows
 # class Details:
