@@ -99,6 +99,48 @@ co_op_df = co_op_only_values(co_op_df)
 co_op_df.to_csv('co_op_df.csv', index=False)
 
 
+# *Multi-family home for sale*
+multi_family_home_df = pd.DataFrame()
+broker_title = ny_house_dataset_master_df.iloc[:,0]
+multi_family_home_df['Broker Title'] = broker_title.copy()
+type = ny_house_dataset_master_df.iloc[:,1]
+multi_family_home_df['Type'] = type.copy()
+price = ny_house_dataset_master_df.iloc[:,2]
+multi_family_home_df['Price'] = price.copy()
+beds = ny_house_dataset_master_df.iloc[:,3]
+multi_family_home_df['Bedrooms'] = beds.copy() #beds in master df
+bath = ny_house_dataset_master_df.iloc[:,4]
+multi_family_home_df['Bathrooms'] = bath.copy() #bath in master df
+multi_family_home_df['Bathrooms'] = multi_family_home_df['Bathrooms'].astype(int) #convert values from float to int
+square_feet = ny_house_dataset_master_df.iloc[:,5]
+multi_family_home_df['Square Feet'] = square_feet.copy() #bath in master df
+multi_family_home_df['Square Feet'] = multi_family_home_df['Square Feet'].astype(int) #convert values from float to int
+address = ny_house_dataset_master_df.iloc[:,6]
+multi_family_home_df['Address'] = address.copy()
+state = ny_house_dataset_master_df.iloc[:,7]
+multi_family_home_df['State'] = state.copy()
+administrative_area_level_2 = ny_house_dataset_master_df.iloc[:,9]
+multi_family_home_df['Administrative Area Level 2'] = administrative_area_level_2.copy()
+locality = ny_house_dataset_master_df.iloc[:,10]
+multi_family_home_df['Locality'] = locality.copy()
+sub_locality = ny_house_dataset_master_df.iloc[:,11]
+multi_family_home_df['Sub-Locality'] = sub_locality.copy()
+latitude = ny_house_dataset_master_df.iloc[:,15]
+multi_family_home_df['Latitude'] = latitude.copy()
+longitude = ny_house_dataset_master_df.iloc[:,16]
+multi_family_home_df['Longitude'] = longitude.copy()
+multi_family_home_df.to_csv('multi_family_home_df.csv', index=False)
+
+def multi_family_home_only_values(df):
+    try:
+        return df[df['Type'].str.contains('Multi-family home for sale')]
+    except Exception as e:
+        print('Unable to filter values')
+
+multi_family_home_df = multi_family_home_only_values(multi_family_home_df)
+
+multi_family_home_df.to_csv('multi_family_home_df.csv', index=False)
+
 
 #creating a Details class that will allow us to filter a certain amount of rows
 # class Details:
