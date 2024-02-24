@@ -34,8 +34,16 @@ condo_df['Latitude'] = latitude.copy()
 longitude = ny_house_dataset_master_df.iloc[:,16]
 condo_df['Longitude'] = longitude.copy()
 
-
 condo_df.to_csv('condo_df.csv', index=False)
+
+set_res = set(type)
+# printing out unique elements in TYPE column from sheet of master workbook
+print("unique elements in type column from sheet of master workbook:\n")
+list_res = (list(set_res))
+
+for item in list_res:
+    print(item)
+
 
 # filtering out non-condo rows from condo dataframe
 def condo_only_values(df):
