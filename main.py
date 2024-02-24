@@ -142,6 +142,49 @@ multi_family_home_df = multi_family_home_only_values(multi_family_home_df)
 multi_family_home_df.to_csv('multi_family_home_df.csv', index=False)
 
 
+# *Mobile house for sale*
+mobile_house_df = pd.DataFrame()
+broker_title = ny_house_dataset_master_df.iloc[:,0]
+mobile_house_df['Broker Title'] = broker_title.copy()
+type = ny_house_dataset_master_df.iloc[:,1]
+mobile_house_df['Type'] = type.copy()
+price = ny_house_dataset_master_df.iloc[:,2]
+mobile_house_df['Price'] = price.copy()
+beds = ny_house_dataset_master_df.iloc[:,3]
+mobile_house_df['Bedrooms'] = beds.copy() #beds in master df
+bath = ny_house_dataset_master_df.iloc[:,4]
+mobile_house_df['Bathrooms'] = bath.copy() #bath in master df
+mobile_house_df['Bathrooms'] = mobile_house_df['Bathrooms'].astype(int) #convert values from float to int
+square_feet = ny_house_dataset_master_df.iloc[:,5]
+mobile_house_df['Square Feet'] = square_feet.copy() #bath in master df
+mobile_house_df['Square Feet'] = mobile_house_df['Square Feet'].astype(int) #convert values from float to int
+address = ny_house_dataset_master_df.iloc[:,6]
+mobile_house_df['Address'] = address.copy()
+state = ny_house_dataset_master_df.iloc[:,7]
+mobile_house_df['State'] = state.copy()
+administrative_area_level_2 = ny_house_dataset_master_df.iloc[:,9]
+mobile_house_df['Administrative Area Level 2'] = administrative_area_level_2.copy()
+locality = ny_house_dataset_master_df.iloc[:,10]
+mobile_house_df['Locality'] = locality.copy()
+sub_locality = ny_house_dataset_master_df.iloc[:,11]
+mobile_house_df['Sub-Locality'] = sub_locality.copy()
+latitude = ny_house_dataset_master_df.iloc[:,15]
+mobile_house_df['Latitude'] = latitude.copy()
+longitude = ny_house_dataset_master_df.iloc[:,16]
+mobile_house_df['Longitude'] = longitude.copy()
+mobile_house_df.to_csv('mobile_house_df.csv', index=False)
+
+def mobile_house_only_values(df):
+    try:
+        return df[df['Type'].str.contains('Mobile house for sale')]
+    except Exception as e:
+        print('Unable to filter values')
+
+mobile_house_df = mobile_house_only_values(mobile_house_df)
+
+mobile_house_df.to_csv('mobile_house_df.csv', index=False)
+
+
 #creating a Details class that will allow us to filter a certain amount of rows
 # class Details:
 #     def __init__(self, data):
