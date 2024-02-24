@@ -29,6 +29,10 @@ locality = ny_house_dataset_master_df.iloc[:,10]
 condo_df['Locality'] = locality.copy()
 sub_locality = ny_house_dataset_master_df.iloc[:,11]
 condo_df['Sub-Locality'] = sub_locality.copy()
+latitude = ny_house_dataset_master_df.iloc[:,15]
+condo_df['Latitude'] = latitude.copy()
+latitude = ny_house_dataset_master_df.iloc[:,15]
+condo_df['Latitude'] = latitude.copy()
 
 
 condo_df.to_csv('condo_df.csv', index=False)
