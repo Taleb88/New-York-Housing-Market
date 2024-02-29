@@ -271,6 +271,48 @@ house_df = house_only_values(house_df)
 house_df.to_csv('house_df.csv', index=False)
 
 
+# *Coming Soon*
+coming_soon_df = pd.DataFrame()
+broker_title = ny_house_dataset_master_df.iloc[:,0]
+coming_soon_df['Broker Title'] = broker_title.copy()
+type = ny_house_dataset_master_df.iloc[:,1]
+coming_soon_df['Type'] = type.copy()
+price = ny_house_dataset_master_df.iloc[:,2]
+coming_soon_df['Price'] = price.copy()
+beds = ny_house_dataset_master_df.iloc[:,3]
+coming_soon_df['Bedrooms'] = beds.copy() #beds in master df
+bath = ny_house_dataset_master_df.iloc[:,4]
+coming_soon_df['Bathrooms'] = bath.copy() #bath in master df
+coming_soon_df['Bathrooms'] = coming_soon_df['Bathrooms'].astype(int) #convert values from float to int
+square_feet = ny_house_dataset_master_df.iloc[:,5]
+coming_soon_df['Square Feet'] = square_feet.copy() #bath in master df
+coming_soon_df['Square Feet'] = coming_soon_df['Square Feet'].astype(int) #convert values from float to int
+address = ny_house_dataset_master_df.iloc[:,6]
+coming_soon_df['Address'] = address.copy()
+state = ny_house_dataset_master_df.iloc[:,7]
+coming_soon_df['State'] = state.copy()
+administrative_area_level_2 = ny_house_dataset_master_df.iloc[:,9]
+coming_soon_df['Administrative Area Level 2'] = administrative_area_level_2.copy()
+locality = ny_house_dataset_master_df.iloc[:,10]
+coming_soon_df['Locality'] = locality.copy()
+sub_locality = ny_house_dataset_master_df.iloc[:,11]
+coming_soon_df['Sub-Locality'] = sub_locality.copy()
+latitude = ny_house_dataset_master_df.iloc[:,15]
+coming_soon_df['Latitude'] = latitude.copy()
+longitude = ny_house_dataset_master_df.iloc[:,16]
+coming_soon_df['Longitude'] = longitude.copy()
+coming_soon_df.to_csv('coming_soon_df.csv', index=False)
+
+def coming_soon_only_values(df):
+    try:
+        return df[df['Type'].str.contains('Coming Soon')]
+    except Exception as e:
+        print('Unable to filter values')
+
+coming_soon_df = coming_soon_only_values(coming_soon_df)
+
+coming_soon_df.to_csv('coming_soon_df.csv', index=False)
+
 
 #creating a Details class that will allow us to filter a certain amount of rows
 # class Details:
