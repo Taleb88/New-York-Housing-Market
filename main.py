@@ -314,6 +314,49 @@ coming_soon_df = coming_soon_only_values(coming_soon_df)
 coming_soon_df.to_csv('coming_soon_df.csv', index=False)
 
 
+# *Pending*
+pending_df = pd.DataFrame()
+broker_title = ny_house_dataset_master_df.iloc[:,0]
+pending_df['Broker Title'] = broker_title.copy()
+type = ny_house_dataset_master_df.iloc[:,1]
+pending_df['Type'] = type.copy()
+price = ny_house_dataset_master_df.iloc[:,2]
+pending_df['Price'] = price.copy()
+beds = ny_house_dataset_master_df.iloc[:,3]
+pending_df['Bedrooms'] = beds.copy() #beds in master df
+bath = ny_house_dataset_master_df.iloc[:,4]
+pending_df['Bathrooms'] = bath.copy() #bath in master df
+pending_df['Bathrooms'] = pending_df['Bathrooms'].astype(int) #convert values from float to int
+square_feet = ny_house_dataset_master_df.iloc[:,5]
+pending_df['Square Feet'] = square_feet.copy() #bath in master df
+pending_df['Square Feet'] = pending_df['Square Feet'].astype(int) #convert values from float to int
+address = ny_house_dataset_master_df.iloc[:,6]
+pending_df['Address'] = address.copy()
+state = ny_house_dataset_master_df.iloc[:,7]
+pending_df['State'] = state.copy()
+administrative_area_level_2 = ny_house_dataset_master_df.iloc[:,9]
+pending_df['Administrative Area Level 2'] = administrative_area_level_2.copy()
+locality = ny_house_dataset_master_df.iloc[:,10]
+pending_df['Locality'] = locality.copy()
+sub_locality = ny_house_dataset_master_df.iloc[:,11]
+pending_df['Sub-Locality'] = sub_locality.copy()
+latitude = ny_house_dataset_master_df.iloc[:,15]
+pending_df['Latitude'] = latitude.copy()
+longitude = ny_house_dataset_master_df.iloc[:,16]
+pending_df['Longitude'] = longitude.copy()
+pending_df.to_csv('pending_df.csv', index=False)
+
+def pending_only_values(df):
+    try:
+        return df[df['Type'].str.contains('Pending')]
+    except Exception as e:
+        print('Unable to filter values')
+
+pending_df = pending_only_values(pending_df)
+
+pending_df.to_csv('pending_df.csv', index=False)
+
+
 #creating a Details class that will allow us to filter a certain amount of rows
 # class Details:
 #     def __init__(self, data):
